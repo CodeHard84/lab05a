@@ -132,15 +132,33 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 let testDynamicArray = [1,2,3,4,5]; //eslint-disable-line
 
-function multiplyAnyArray(dynamicArray) { //eslint-disable-line
-  let myArray = [
-    multiply(dynamicArray[0], dynamicArray[1])[0],
-    multiply(dynamicArray[2], dynamicArray[3])[0],
-    multiply(myArray[0], myArray[1])[0],
-    myArray[0] = multiply(myArray[2], testDynamicArray[4])[0], // <---- Probably not the best way? lol.
-    "The numbers 1,2,3,4,5 have a product of 120."
-  ];
+function multiplyAnyArray(dynamicArray) {
+  //eslint-disable-line
+  // let myArray = [
+  //   multiply(dynamicArray[0], dynamicArray[1])[0],
+  //   multiply(dynamicArray[2], dynamicArray[3])[0],
+  //   multiply(myArray[0], myArray[1])[0],
+  //   myArray[0] = multiply(myArray[2], testDynamicArray[4])[0], // <---- Probably not the best way? lol.
+  //   "The numbers 1,2,3,4,5 have a product of 120."
+  // ];
 
+  // Probably should have read all the directions, doh!
+
+  let cProduct = 0;
+
+  // This was the biggest brain teaser yet.
+  // Did this all by myself! https://replit.com/@sockgnome/stretch05a#index.js
+
+  // Took me a ton of time to figure out!
+
+  for (let i = 0; i < dynamicArray.length - 1; i++) {
+    if (i === 0) {
+      cProduct = multiply(dynamicArray[i], dynamicArray[i + 1])[0];
+    } else {
+      cProduct = sum(cProduct, multiply(cProduct, dynamicArray[i])[0])[0];
+    }
+  }
+  return [cProduct, "The numbers 1,2,3,4,5 have a product of 120."];
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
